@@ -41,7 +41,9 @@ const buypackage = require("./route/package/buypackages");
 const rooms = require("./route/rooms/rooms");
 const roomsorder = require("./route/rooms/roomorders");
 const roomcategory = require("./route/rooms/category");
-
+const paymentGetWay = require("./route/admin/paymentGateway");
+const customerOrderBookings = require("./route/Orders/customerDetails"); //this 23-12-2023
+// const orderBookings = require("./route/Orders/orderDetails"); //this 23-12-2023 no need
 //routes
 app.use("/api", customerauth);
 app.use("/api", banner);
@@ -58,6 +60,9 @@ app.use("/api", buypackage);
 app.use("/api", rooms);
 app.use("/api", roomsorder);
 app.use("/api", roomcategory);
+app.use("/api/payment", paymentGetWay);
+app.use("/api/orders", customerOrderBookings);
+// app.use("/api/orders", orderBookings);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

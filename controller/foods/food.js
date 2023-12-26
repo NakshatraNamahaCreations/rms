@@ -4,43 +4,45 @@ class food {
   async postfood(req, res) {
     let {
       category,
-      subcategory,
+      // subcategory,
       foodname,
       foodprice,
-      fooddesc,
-      customerofferprice,
-      foodvolume,
-      foodvolumetype,
-      foodfeatures,
+      categoryId,
+      dishType,
+      // fooddesc,
+      // customerofferprice,
+      // foodvolume,
+      // foodvolumetype,
+      // foodfeatures,
     } = req.body;
-    let file = req.files[0].filename;
-    let file1 = req.files[1].filename;
-    let file2 = req.files[2].filename;
+    // let file = req.files[0].filename;
+    // let file1 = req.files[1].filename;
+    // let file2 = req.files[2].filename;
     try {
       if (
         !category |
-        !subcategory |
+        // !subcategory |
         !foodname |
-        !foodprice |
-        !customerofferprice |
-        !foodvolume |
-        !foodvolumetype |
-        !foodfeatures |
-        !fooddesc
+        !foodprice
+        // !customerofferprice |
+        // !foodvolume |
+        // !foodvolumetype |
+        // !foodfeatures |
+        // !fooddesc
       ) {
         return res.status(401).json({ error: "All fields must be required" });
       } else {
         let newfood = new foodModel({
           category,
-          subcategory,
+          // subcategory,
           foodname,
           foodprice,
-          customerofferprice,
-          foodvolume,
-          foodfeatures,
-          foodvolumetype,
-          foodimage: [file, file1, file2],
-          fooddesc,
+          dishType,
+          categoryId,
+          // foodfeatures,
+          // foodvolumetype,
+          // foodimage: [file, file1, file2],
+          // fooddesc,
         });
         let save = newfood.save();
         if (save) {
@@ -78,7 +80,6 @@ class food {
     return res.json({ sucess: "Delete successfuly" });
   }
 
- 
   //edit
 
   async editfood(req, res) {

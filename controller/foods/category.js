@@ -2,11 +2,12 @@ const categoryModel = require("../../model/foods/category");
 
 class category {
   async addcategory(req, res) {
-    let { categoryname } = req.body;
+    let { categoryname, categoryType } = req.body;
     let file = req.file.filename;
 
     let add = new categoryModel({
       categoryname: categoryname,
+      categoryType,
       categoryimage: file,
     });
     let save = add.save();
